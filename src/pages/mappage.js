@@ -20,9 +20,7 @@ const MapPage = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [tagText, setTagText] = useState("");
 
-  // ----------------------------------
-  // 색상 선택
-  // ----------------------------------
+
   const handleColorSelect = (color) => {
     setSelectedColor(color);
     selectedColorRef.current = color;
@@ -37,7 +35,7 @@ const fetchRouteScore = async () => {
   const lat = center.getLat();
   const lng = center.getLng();
 
-  const offset = 0.0005; // 🔥 범위 좁히기
+  const offset = 0.0005; 
 
   try {
     const res = await fetch(`${API_BASE}/api/pins/score`, {
@@ -61,9 +59,7 @@ const fetchRouteScore = async () => {
 };
 
 
-  // ----------------------------------
-  // 핀 로딩
-  // ----------------------------------
+
   const loadPins = () => {
     if (!window.map) return;
 
@@ -111,9 +107,7 @@ const fetchRouteScore = async () => {
       .catch((err) => console.error("핀 불러오기 오류:", err));
   };
 
-  // ----------------------------------
-  // 지도 초기화
-  // ----------------------------------
+
   useEffect(() => {
     const container = document.getElementById("map");
     if (!container) return;
@@ -159,24 +153,22 @@ const fetchRouteScore = async () => {
       setShowModal(true);
     });
 
-    // 첫 로딩
+
     loadPins();
     fetchRouteScore();
 
-    // 지도 이동 시
+
     kakao.maps.event.addListener(map, "idle", () => {
       loadPins();
       fetchRouteScore();
     });
   }, []);
 
-  // ----------------------------------
-  // 대표 마커 업데이트 (지도 중심)
-  // ----------------------------------
+
   useEffect(() => {
     if (!window.map || !routeScore) return;
 
-    // 핀 없으면 제거
+
     if (routeScore.pin_count === 0) {
       if (window.routeMarker) {
         window.routeMarker.setMap(null);
@@ -205,9 +197,7 @@ const fetchRouteScore = async () => {
     });
   }, [routeScore]);
 
-  // ----------------------------------
-  // 핀 등록
-  // ----------------------------------
+
   const handleSubmitPin = () => {
     if (!selectedFile) return alert("사진을 업로드하세요.");
     if (!tagText.trim()) return alert("의견을 입력하세요.");
@@ -248,9 +238,7 @@ const fetchRouteScore = async () => {
     setShowMenu(false);
   };
 
-  // ----------------------------------
-  // JSX
-  // ----------------------------------
+
   return (
     <div className="map-wrapper">
 
@@ -314,5 +302,6 @@ const fetchRouteScore = async () => {
     </div>
   );
 };
+
 
 export default MapPage;  
