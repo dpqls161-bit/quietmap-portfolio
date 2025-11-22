@@ -5,7 +5,7 @@ import { useAuth } from "../context/AuthContext";
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const { login } = useAuth(); // ⭐ AuthContext에서 로그인 함수 가져오기
+  const { login } = useAuth(); 
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,23 +26,22 @@ const LoginPage = () => {
   };
 
   const handleGuestStart = () => {
-    // TODO: 비회원 플로우 넣으려면 여기서 /map 등으로 이동
+
     navigate("/");
   };
 
   return (
     <div className="auth-page">
-      {/* 위쪽 꾸미기 라인 대신 여백만 */}
+
       <div className="auth-top-space" />
 
       <div className="auth-card">
-        {/* 핀 아이콘 */}
+
         <div className="auth-pin-wrapper">
           <div className="auth-pin-body" />
           <div className="auth-pin-shadow" />
         </div>
-
-        {/* 폼 */}
+    
         <form className="auth-form" onSubmit={handleSubmit}>
           <input
             type="email"
@@ -70,7 +69,6 @@ const LoginPage = () => {
         </form>
         </div>
 
-      {/* 하단 회원가입 영역 */}
       <div className="auth-bottom">
         <span>아직 회원이 아니신가요?</span>
         <Link to="/signup" className="auth-bottom-signup">
@@ -80,5 +78,6 @@ const LoginPage = () => {
     </div>
   );
 };
+
 
 export default LoginPage;
