@@ -34,8 +34,7 @@ const ResetPasswordPage = () => {
       return;
     }
 
-    // TODO: 실제 Firebase 비밀번호 변경 로직 연동 (updatePassword 등)
-    // 지금은 UI 데모이므로 성공 메시지만 보여줌
+
     setMessage("비밀번호 변경 요청이 저장되었습니다. (데모 화면)");
   };
 
@@ -43,7 +42,7 @@ const ResetPasswordPage = () => {
     <div className="security-page">
      
 
-      {/* 내용 영역 */}
+
       <main className="security-main">
         <form className="security-card" onSubmit={handleSubmit}>
           <div className="security-field">
@@ -91,5 +90,6 @@ const ResetPasswordPage = () => {
     </div>
   );
 };
+
 
 export default ResetPasswordPage;
