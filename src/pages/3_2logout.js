@@ -16,9 +16,8 @@ const LoginPage = () => {
     setError("");
 
     try {
-      // Firebase 로그인
       await login(email, password);
-      navigate("/main"); // 로그인 성공 시 메인뷰로 이동
+      navigate("/main"); 
     } catch (err) {
       console.error(err);
       setError("이메일 또는 비밀번호를 다시 확인해주세요.");
@@ -81,3 +80,4 @@ const LoginPage = () => {
 
 
 export default LoginPage;
+
