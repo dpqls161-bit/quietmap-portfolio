@@ -5,15 +5,12 @@ import cat from "../cat.jpg";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 
-// ---------------------------
-// 프로필 화면 (읽기 전용 버전)
-// ---------------------------
+
 export function ProfileSection() {
   const [name, setName] = useState("");   // 닉네임
   const [email, setEmail] = useState(""); // 이메일
   const [status, setStatus] = useState("...");
 
-  // 🔥 로그인한 사용자 정보 가져오기
   useEffect(() => {
     const user = auth.currentUser;
 
@@ -43,9 +40,7 @@ export function ProfileSection() {
   );
 }
 
-// ---------------------------
-// 메뉴 리스트
-// ---------------------------
+
 export function MenuList() {
   const navigate = useNavigate();
 
@@ -69,3 +64,4 @@ export function MenuList() {
     </div>
   );
 }
+
