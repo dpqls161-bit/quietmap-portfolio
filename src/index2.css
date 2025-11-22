@@ -1,6 +1,6 @@
 /* src/index.css */
 
-/* 기본 세팅 */
+
 * {
   box-sizing: border-box;
 }
@@ -27,7 +27,7 @@ a {
   background-color: #ffffff;
 }
 
-/* 상단 여백 (나중에 검은 곡선 그림 넣고 싶으면 여기다가 background-image로 넣으면 됨) */
+/* 상단 여백 */
 .auth-top-space {
   height: 40px;
 }
@@ -52,12 +52,12 @@ a {
 .auth-pin-body {
   width: 80px;
   height: 80px;
-  background-color: #e53935; /* 빨간 핀 색 */
+  background-color: #e53935; 
   border-radius: 50% 50% 50% 50%;
   position: relative;
 }
 
-/* 아래쪽이 뾰족해 보이게 삼각형 */
+
 .auth-pin-body::after {
   content: "";
   position: absolute;
@@ -71,7 +71,7 @@ a {
   border-top: 28px solid #e53935;
 }
 
-/* 핀 안의 구멍 */
+
 .auth-pin-body::before {
   content: "";
   position: absolute;
@@ -92,7 +92,7 @@ a {
   margin-top: 18px;
 }
 
-/* 폼 */
+
 .auth-form {
   width: 100%;
   display: flex;
@@ -100,7 +100,7 @@ a {
   gap: 12px;
 }
 
-/* 입력창 */
+
 .auth-input {
   width: 100%;
   height: 48px;
@@ -116,7 +116,7 @@ a {
   color: #b0b0b0;
 }
 
-/* 에러 메시지 */
+
 .auth-error {
   margin: 0;
   margin-top: 4px;
@@ -124,7 +124,7 @@ a {
   color: #e53935;
 }
 
-/* 로그인 버튼 */
+
 .auth-button {
   margin-top: 8px;
   width: 100%;
@@ -142,7 +142,7 @@ a {
   opacity: 0.95;
 }
 
-/* 비회원 / 비번 재설정 링크 */
+
 .auth-sub-links {
   margin-top: 10px;
   font-size: 11px;
@@ -171,7 +171,7 @@ a {
   color: #cccccc;
 }
 
-/* 하단 회원가입 영역 */
+
 .auth-bottom {
   font-size: 12px;
   color: #444444;
@@ -189,7 +189,7 @@ a {
   text-decoration: underline;
 }
 
-/* ===== 비밀번호 변경 / 보안 설정 페이지 ===== */
+
 
 .security-page {
   min-height: 100vh;
@@ -198,7 +198,7 @@ a {
   background: linear-gradient(to bottom, #ffffff 0%, #ffffff 45%, #ffe4e4 100%);
 }
 
-/* 상단 헤더 */
+
 .security-header {
   display: flex;
   align-items: center;
@@ -225,7 +225,7 @@ a {
   flex: 1;
   display: flex;
   justify-content: flex-start;
-  padding: 16px 16px 80px; /* 아래 네비게이션 높이만큼 여유 */
+  padding: 16px 16px 80px; 
 }
 
 .security-card {
@@ -260,14 +260,14 @@ a {
   outline: none;
 }
 
-/* 아래 설명 텍스트 */
+
 .security-hint {
   margin: 4px 2px 0;
   font-size: 10px;
   color: #999999;
 }
 
-/* 에러 / 메시지 */
+
 .security-error {
   margin: 6px 2px 0;
   font-size: 11px;
@@ -280,7 +280,7 @@ a {
   color: #388e3c;
 }
 
-/* 저장 버튼 */
+
 .security-save-btn {
   display: block;
   margin: 28px auto 0;
@@ -299,7 +299,7 @@ a {
   opacity: 0.96;
 }
 
-/* 하단 네비게이션 바 */
+
 .security-bottom-nav {
   position: fixed;
   left: 0;
@@ -327,7 +327,7 @@ a {
   font-size: 22px;
   font-weight: 700;
 }
-/* ===== 회원가입 페이지 ===== */
+
 
 .signup-page {
   min-height: 100vh;
@@ -346,7 +346,7 @@ a {
   align-items: center;
 }
 
-/* QUIET MAP 로고 버튼 */
+
 .signup-logo-btn {
   margin-top: 8px;
   margin-bottom: 24px;
@@ -360,7 +360,7 @@ a {
   font-weight: 600;
 }
 
-/* 폼 전체 */
+
 .signup-form {
   width: 100%;
   display: flex;
@@ -368,7 +368,7 @@ a {
   gap: 12px;
 }
 
-/* 각 필드 */
+
 .signup-field {
   display: flex;
   flex-direction: column;
@@ -379,14 +379,14 @@ a {
   margin-bottom: 4px;
 }
 
-/* 에러 메시지 */
+
 .signup-error {
   margin: 4px 2px 0;
   font-size: 12px;
   color: #e53935;
 }
 
-/* 회원가입 버튼 */
+
 .signup-submit-btn {
   margin-top: 20px;
   width: 100%;
@@ -404,7 +404,7 @@ a {
   opacity: 0.95;
 }
 
-/* 하단 로그인 링크 */
+
 .signup-bottom-link {
   margin-top: 16px;
   font-size: 12px;
@@ -422,19 +422,16 @@ a {
 .signup-bottom-login:hover {
   text-decoration: underline;
 }
-/* ===== 메인 홈(Quiet Map List) 페이지 ===== */
 
-/* ===== 메인 홈(Quiet Map List) 페이지 ===== */
 
 .home-page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;       /* 내용 가운데 정렬 */
+  align-items: center;       
   background-color: #ffffff;
 }
 
-/* 상단 반원 헤더 */
 .home-header {
   width: 100%;
   display: flex;
@@ -443,7 +440,7 @@ a {
 }
 
 .home-header-inner {
-  width: 480px;              /* 헤더 폭 고정 */
+  width: 480px;             
   height: 200px;
   position: relative;
   overflow: hidden;
@@ -472,23 +469,21 @@ a {
   line-height: 1.2;
 }
 
-/* 메인 컨텐츠 영역 */
+
 .home-main {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 24px 0 96px;      /* 아래 네비 여유 */
+  padding: 24px 0 96px;      
 }
 
-/* 2x2 카드 박스 전체 폭 고정 */
 .home-grid {
-  width: 480px;              /* 카드들이 들어가는 박스 폭 */
+  width: 480px;              
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
 
-/* 공통 카드 스타일 */
 .home-card {
   border: none;
   border-radius: 24px;
@@ -501,7 +496,6 @@ a {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
-/* 카드 색상 */
 .home-card-pink {
   background-color: #ffe6fb;
 }
@@ -518,7 +512,7 @@ a {
   background-color: #e4f3ff;
 }
 
-/* 카드 안 아이콘/텍스트 */
+
 .home-card-icon {
   width: 36px;
   height: 36px;
@@ -544,13 +538,13 @@ a {
   font-weight: 700;
 }
 
-/* 하단 네비게이션 바 */
+
 .home-bottom-nav {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
   bottom: 0;
-  width: 480px;              /* 네비 폭도 고정 */
+  width: 480px;              
   height: 64px;
   background-color: #e53935;
   border-radius: 20px 20px 0 0;
@@ -572,4 +566,5 @@ a {
 .home-nav-item-home {
   font-size: 24px;
   font-weight: 700;
+
 }
