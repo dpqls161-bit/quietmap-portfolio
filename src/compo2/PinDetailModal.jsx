@@ -20,10 +20,9 @@ const PinDetailModal = ({ pinId, onClose }) => {
         const data = await fetchPinDetail(pinId);
         console.log("📌 받아온 핀 상세:", data);
 
-        // 👉 이미지 URL은 오직 data.image_url만 사용
+      
         setPhoto(data.image_url ?? null);
 
-        // 👉 태그 배열 처리
         const tagArray = Array.isArray(data.tags)
           ? data.tags
           : (data.tags || "")
@@ -104,3 +103,4 @@ const PinDetailModal = ({ pinId, onClose }) => {
 };
 
 export default PinDetailModal;
+
