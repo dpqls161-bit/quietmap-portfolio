@@ -8,25 +8,23 @@ const MainView = () => {
   const navigate = useNavigate();
   const { logout } = useAuth();
 
-  // 1번 카드: 로그아웃 버튼
+  // 로그아웃 버튼
   const handleLogout = async () => {
     try {
-      await logout();          // Firebase 로그아웃
-      navigate("/login");      // 로그인 화면으로 이동
+      await logout();         
+      navigate("/login");      
     } catch (err) {
       console.error("로그아웃 오류:", err);
       alert("로그아웃 중 오류가 발생했습니다.");
     }
   };
 
-  // 다른 카드용: 나중에 기능 넣을 때 사용하는 알림용 함수
   const handleTodo = (msg) => {
     alert(`${msg} 기능은 추후 구현 예정입니다 :)`);
   };
 
   return (
     <div className="home-page">
-      {/* 상단 반원 헤더 */}
       <header className="home-header">
         <div className="home-header-inner">
           <div className="home-header-circle">
@@ -39,10 +37,10 @@ const MainView = () => {
         </div>
       </header>
 
-      {/* 4분할 메뉴 카드 */}
+
       <main className="home-main">
         <div className="home-grid">
-          {/* 1. (수정) 지도 경로 검색 → 로그아웃 버튼 */}
+          {/* 1.  로그아웃 버튼 */}
           <button
             className="home-card home-card-pink"
             type="button"
@@ -61,7 +59,7 @@ const MainView = () => {
 <button
   className="home-card home-card-yellow"
   type="button"
-  onClick={() => navigate("/map")}   // ✅ 핀찍기용 페이지
+  onClick={() => navigate("/map")}   
 >
   <div className="home-card-icon">👥</div>
   <div className="home-card-label">
@@ -74,7 +72,7 @@ const MainView = () => {
 <button
   className="home-card home-card-green"
   type="button"
-  onClick={() => navigate("/tag")}           // ✅ 읽기/태그용 페이지
+  onClick={() => navigate("/tag")}          
 >
   <div className="home-card-icon">🏷️</div>
   <div className="home-card-label">
@@ -84,7 +82,7 @@ const MainView = () => {
 </button>
 
 
-          {/* 4. 문의하기 (아직 기능 없으면 알림으로 처리) */}
+          {/* 4. 문의하기*/}
           <button
             className="home-card home-card-blue"
             type="button"
@@ -106,3 +104,4 @@ const MainView = () => {
 };
 
 export default MainView;
+
