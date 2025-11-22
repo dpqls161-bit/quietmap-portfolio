@@ -10,9 +10,9 @@ import { useNavigate, Link } from "react-router-dom";
 const SignupPage = () => {
   const navigate = useNavigate();
 
-  const [name, setName] = useState("");        // 이름
-  const [userId, setUserId] = useState("");    // 아이디
-  const [email, setEmail] = useState("");      // 이메일
+  const [name, setName] = useState("");       
+  const [userId, setUserId] = useState("");    
+  const [email, setEmail] = useState("");     
   const [password, setPassword] = useState(""); 
   const [passwordCheck, setPasswordCheck] = useState("");
   const [error, setError] = useState("");
@@ -38,7 +38,7 @@ const SignupPage = () => {
         password
       );
 
-      // Firebase 프로필에 이름/아이디 저장 (간단히 묶어서 저장)
+
       await updateProfile(userCred.user, {
         displayName: `${name} (${userId})`,
       });
@@ -56,18 +56,18 @@ const SignupPage = () => {
       <div className="auth-top-space" />
 
       <div className="signup-card">
-        {/* 위쪽 핀 + 손가락 아이콘 자리 (핀만 구현) */}
+
         <div className="auth-pin-wrapper">
           <div className="auth-pin-body" />
           <div className="auth-pin-shadow" />
         </div>
 
-        {/* QUIET MAP 로고 버튼 */}
+
         <button type="button" className="signup-logo-btn">
           QUIET MAP
         </button>
 
-        {/* 폼 */}
+
         <form className="signup-form" onSubmit={handleSubmit}>
           <div className="signup-field">
             <label className="signup-label">이름</label>
@@ -131,7 +131,7 @@ const SignupPage = () => {
           </button>
         </form>
 
-        {/* 이미 계정 있을 때 로그인으로 */}
+
         <div className="signup-bottom-link">
           <span>이미 계정이 있으신가요?</span>
           <Link to="/login" className="signup-bottom-login">
@@ -142,5 +142,6 @@ const SignupPage = () => {
     </div>
   );
 };
+
 
 export default SignupPage;
