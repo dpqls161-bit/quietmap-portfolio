@@ -25,17 +25,17 @@ export const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-  // ⭐ 로그인 함수
+  // 로그인 함수
   const login = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  // ⭐ 회원가입 함수
+  // 회원가입 함수
   const signup = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  // ⭐ 비밀번호 재설정 함수
+  // 비밀번호 재설정 함수
   const resetPassword = (email) => {
     return sendPasswordResetEmail(auth, email);
   };
@@ -58,5 +58,6 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
 
 export const useAuth = () => useContext(AuthContext);
