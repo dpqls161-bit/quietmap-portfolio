@@ -2,7 +2,7 @@
 
 const API_BASE = "https://preaortic-paratactically-marti.ngrok-free.dev";
 
-/** JSON GET */
+/* JSON GET */
 async function get(url) {
   const res = await fetch(url, {
     method: "GET",
@@ -13,7 +13,7 @@ async function get(url) {
   return res.json();
 }
 
-/** JSON POST */
+/* JSON POST */
 async function post(url, data) {
   const res = await fetch(url, {
     method: "POST",
@@ -26,17 +26,18 @@ async function post(url, data) {
   return res.json();
 }
 
-/** 핀 전체 목록 */
+/* 핀 전체 목록 */
 export async function fetchPins() {
   return get(`${API_BASE}/api/pins`);
 }
 
-/** 특정 핀 상세 */
+/* 특정 핀 상세 */
 export async function fetchPinDetail(pinId) {
   return get(`${API_BASE}/api/pins/${pinId}`);
 }
 
-/** 특정 핀에 태그 추가 */
+/* 특정 핀에 태그 추가 */
 export async function addTagToPin(pinId, text) {
   return post(`${API_BASE}/api/pins/${pinId}/tags`, { tag: text });
 }
+
