@@ -1,0 +1,113 @@
+/* 전체 페이지 배경 */
+.mypage {
+  background: linear-gradient(#ffffff, #f5caca);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.profile-section {
+  width: 100%;
+}
+
+.profile-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.profile-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-img {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-box {
+  background: #fff;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  width: 900px;
+}
+
+.profile-input {
+  width: 200px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #aaa;
+  font-size: 14px;
+  outline: none;
+}
+
+.edit-row {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.edit-icon {
+  font-size: 18px;
+}
+
+.edit-complete {
+  margin-top: 12px;
+  background: #d64545;
+  padding: 8px 14px;
+  color: white;
+  border-radius: 10px;
+  width: fit-content;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+
+.menu-list {
+  margin-top: 30px;
+  background: white;
+  border-radius: 14px;
+  padding: 6px 0;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-text {
+  font-size: 15px;
+}
+
+.menu-arrow {
+  font-size: 18px;
+  color: #444;
+}
+
+.mypage {
+  max-width: 800px;
+  margin: 0 auto;   /* 가운데 정렬 */
+}
+

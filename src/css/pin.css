@@ -1,0 +1,81 @@
+/* 전체 페이지 배경 */
+.report-page {
+  background: #ffffff;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.report-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.text-box{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.pin-icon {
+  font-size: 50px;
+}
+
+.header-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.header-sub {
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+}
+
+
+.report-box {
+  background: #f2b6b6;
+  padding: 20px;
+  border-radius: 16px;
+  margin-top: 20px;
+}
+
+.report-title {
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.report-text {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.green {
+  background-color: #4caf50;
+}
+
+.yellow {
+  background-color: #f2c94c;
+}
+
+.red {
+  background-color: #e63946;
+}
+
+
+.report-page{
+  max-width: 800px;
+  margin: 0 auto;   /* 가운데 정렬 */
+}

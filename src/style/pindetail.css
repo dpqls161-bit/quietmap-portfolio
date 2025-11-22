@@ -1,0 +1,81 @@
+/* 모달 배경 */
+.pin-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+/* 모달 박스 */
+.pin-modal {
+  width: 85%;
+  max-width: 420px;
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 닫기 버튼 */
+.pin-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 18px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* 사진 */
+.pin-modal-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* 태그 목록 */
+.pin-modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pin-tag {
+  background: #eee;
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+/* 입력창 + 버튼 */
+.pin-modal-input-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.pin-modal-input-row input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.pin-modal-input-row button {
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: #ff5252;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
