@@ -16,7 +16,6 @@ Quiet Map은 사용자가 도시 환경에서 ‘빠른 길’이 아닌 ‘조�
 - 태그 등록 및 동적 렌더링 로직 구현
 - Firebase Authentication 기반 로그인 기능 구현
 - React Router 기반 페이지 라우팅 구성
-- REST API 연동 및 비동기 처리 구현
 
 
 ## 주요 기술 스택
@@ -26,7 +25,6 @@ Quiet Map은 사용자가 도시 환경에서 ‘빠른 길’이 아닌 ‘조�
 - Context API
 - Kakao Maps JavaScript SDK
 - Firebase Authentication
-- REST API (Axios 기반 통신)
 - CSS 기반 모듈화 스타일 관리
 
 
