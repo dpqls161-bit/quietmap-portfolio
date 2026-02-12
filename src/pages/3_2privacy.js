@@ -1,4 +1,4 @@
-import "../css/privacy.css";
+import "../styles/privacy.css";
 import BottomNav from "../components/nav";
 
 

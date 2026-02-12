@@ -1,6 +1,6 @@
 // src/components/3_2compo.js
 import { useState, useEffect } from "react";
-import "../css/3_2style.css";
+import "../styles/3_2style.css";
 import cat from "../cat.jpg";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import "../css/mapstyle.css";
+import "../styles/mapstyle.css";
 import BottomNav from "../components/nav";
 import { auth } from "../firebase";
 

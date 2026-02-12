@@ -1,5 +1,5 @@
 
-import "../css/3style.css";
+import "../styles/3style.css";
 
  //맨 위 문의페이지 텍스트
 export default function HeaderTitle({ title }) {

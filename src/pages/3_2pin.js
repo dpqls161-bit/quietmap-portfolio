@@ -1,4 +1,4 @@
-import "../css/pin.css";
+import "../styles/pin.css";
 import BottomNav from "../components/nav";
 
 export default function PinPage() {

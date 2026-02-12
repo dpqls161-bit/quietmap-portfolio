@@ -1,6 +1,6 @@
 // src/components/PinDetailModal.jsx
 import React, { useState, useEffect } from "react";
-import "../style/pindetail.css";
+import "../styles/pindetail.css";
 import { fetchPinDetail, addTagToPin } from "../api/pins";
 
 const PinDetailModal = ({ pinId, onClose }) => {

@@ -1,4 +1,4 @@
-import "../css/3style.css";
+import "../styles/3style.css";
 import HeaderTitle from "../components/3compo";
 import  {LogoBox} from "../components/3compo";
 import BottomNav from "../components/nav";

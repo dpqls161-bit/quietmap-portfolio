@@ -1,5 +1,5 @@
 import BottomNav from "../components/nav";
-import "../css/3style.css";
+import "../styles/3style.css";
 import HeaderTitle from "../components/3compo";
 import  {LogoBox, LabeledInput,LabeledInput2, SubmitButton} from "../components/3compo";
 import { useNavigate } from "react-router-dom";

@@ -1,5 +1,5 @@
 
-import "../css/3_2style.css";
+import "../styles/3_2style.css";
 import { MenuList, ProfileSection } from "../components/3_2compo";
 import BottomNav from "../components/nav";
 

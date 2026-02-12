@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "../css/nav.css";
+import "../styles/nav.css";
 
 export default function BottomNav() {
   const navigate = useNavigate();
