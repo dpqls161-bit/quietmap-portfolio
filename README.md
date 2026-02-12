@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Quiet Map 🗺️
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> 소음 정보를 지도에 공유할 수 있는 웹 서비스  
+> 2025 교내 해커톤 프로젝트 (Frontend)
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 📌 프로젝트 소개
 
-### `npm start`
+Quiet Map은 사용자가 조용한 공간을 지도에 등록하고,  
+소음 점수와 태그를 통해 장소를 확인할 수 있도록 만든 웹 서비스입니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+첫 해커톤 프로젝트로,  
+지도 API와 사용자 인증 기능을 실제 서비스 형태로 구현해보는 경험을 했습니다.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠 사용 기술
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React
+- JavaScript (ES6+)
+- Kakao Map API
+- Axios
+- Firebase Authentication
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 👨‍💻 담당 역할 (Frontend)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+프론트엔드 개발을 담당했습니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1️⃣ 지도 구현
+- Kakao Map API를 연동해 지도 화면 구현
+- 서버에서 받아온 핀 데이터를 마커로 표시
+- 마커 클릭 시 상세 정보를 확인할 수 있도록 UI 구성
 
-### `npm run eject`
+### 2️⃣ 핀 등록 기능
+- 로그인 사용자만 핀을 등록할 수 있도록 처리
+- 소음 점수 및 태그 입력 UI 구현
+- 등록 완료 후 지도에 바로 반영되도록 상태 업데이트
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 3️⃣ 로그인 기능 (Firebase)
+- Firebase Authentication을 사용해 이메일/비밀번호 로그인 구현
+- 로그인 상태에 따라 핀 등록 기능 접근을 제한
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 4️⃣ API 연동
+- Axios를 사용해 핀 조회 및 등록 API 연결
+- 비동기 요청 후 받아온 데이터를 화면에 반영
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📸 주요 화면
 
-## Learn More
+### 🗺️ 메인 지도 화면
+![main](./assets/main.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 📍 핀 상세 정보
+![pin](./assets/pin.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 🔐 로그인 화면
+![login](./assets/login.png)
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🎥 시연 영상
 
-### Analyzing the Bundle Size
+프로젝트 시연 영상:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+👉 [Demo Video 보기](./assets/demo.mp4)
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📂 프로젝트 구조
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
