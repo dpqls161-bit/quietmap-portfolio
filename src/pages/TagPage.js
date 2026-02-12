@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "../styles/mapstyle.css";
 import BottomNav from "../components/nav";
-import PinDetailModal from "../compo2/PinDetailModal";
+import PinDetailModal from "../components/PinDetailModal";
 
 const API_BASE = "https://preaortic-paratactically-marti.ngrok-free.dev";
 /* global kakao */

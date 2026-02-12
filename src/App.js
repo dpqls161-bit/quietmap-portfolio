@@ -8,11 +8,12 @@ import PinPage from "./pages/3_2pin";
 import LogoutPage from "./pages/3_2logout";
 import SecurityPage from "./pages/3_2security";
 import MapPage1 from "./pages/mappage";
-import LoginPage from "./page2/LoginPage";
-import SignupPage from "./page2/SignupPage";
-import MainView from "./page2/MainView";
-import Real from "./compo2/PinDetailModal";
-import Tag from "./page2/TagPage";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+import MainView from "./pages/MainView";
+import Tag from "./pages/TagPage";
+
+import Real from "./components/PinDetailModal";
 
 function App() {
   return (
