@@ -1,149 +1,86 @@
+
+
 .map-wrapper {
   position: relative;
   width: 100%;
-  height: 100vh;   
+  height: 100vh;
+  overflow: hidden;
 }
 
+
+#map,
 .map-container {
   width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.header-inputs {
-  position: absolute;
-  top: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 85%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 20;
-}
-
-.header-inputs input {
-  background: rgba(255, 255, 255, 0.85);
-  padding: 12px 15px;
-  border-radius: 12px;
-  border: none;
-  font-size: 14px;
-}
-
-.navbar {
-  position: fixed;   
-  bottom: 20px;           
-  left: 50%;
-  transform: translateX(-50%);
-  background: #c53939;
-  width: 70%;
-  padding: 14px 0;
-  border-radius: 30px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  z-index: 9999;       
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  height: 100vh;
+  background: #e5e5e5; /* 지도 로딩 전 백그라운드 */
 }
 
 
-.pin-button {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: white;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  cursor: pointer;
-  z-index: 9999;
-}
-
-
-.color-menu {
-  position: fixed;
-  top: 80px;
-  right: 20px;
-  background: white;
-  padding: 12px;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-  z-index: 9999;
-}
-
-.color {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.color.red {
-  background: #ff4d4d;
-}
-
-.color.yellow {
-  background: #ffd54f;
-}
-
-.color.green {
-  background: #4caf50;
-}
 
 .pin-main-button {
-  position: fixed;
+  position: absolute;
   top: 20px;
-  right: 20px;
-  background: #ffffff;
-  padding: 10px 16px;
-  border-radius: 10px;
-  font-size: 14px;
+  left: 20px;
+  z-index: 50;
+
+  background: #ff5252;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+
+  font-size: 16px;
   font-weight: bold;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
   cursor: pointer;
-  z-index: 9999;
+
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
 }
 
+.pin-main-button:hover {
+  background: #e44545;
+}
+
+
+
+
 .pin-color-menu {
-  position: fixed;
+  position: absolute;
   top: 70px;
-  right: 20px;
-  background: white;
-  padding: 12px;
+  left: 20px;
+  z-index: 50;
+
+  background: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  padding: 10px;
+
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 12px;
-  z-index: 9999;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
 }
 
 .pin-color {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   cursor: pointer;
+
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
 }
 
 .pin-color.red {
-  background: #ff5959;
+  background: #e24a4a;
 }
+
 .pin-color.yellow {
-  background: #ffdd59;
+  background: #f7d641;
 }
+
 .pin-color.green {
-  background: #52c41a;
+  background: #3fc36c;
 }
+
+
 
 .modal-overlay {
   position: fixed;
@@ -151,41 +88,85 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.4);
+  z-index: 200;
+
   display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 50;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .modal-box {
-  background: #fff;
-  padding: 20px;
-  width: 80%;
-  border-radius: 12px;
+  width: 85%;
+  max-width: 420px;
+
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-box h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.modal-box label {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.modal-box input[type="file"] {
+  margin-bottom: 10px;
 }
 
 .modal-box textarea {
-  height: 80px;
+  width: 100%;
+  height: 90px;
   border: 1px solid #ddd;
-  padding: 10px;
-  border-radius: 8px;
+  border-radius: 10px;
+  padding: 8px;
+  resize: none;
+  font-size: 14px;
+  outline: none;
 }
 
 .modal-save-btn {
   background: #ff5252;
-  padding: 10px;
-  color: #fff;
-  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px;
 }
 
 .modal-cancel-btn {
-  background: gray;
-  padding: 10px;
-  color: white;
-  border-radius: 8px;
+  background: #dddddd;
+  color: #333;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
 }
 
+@media (max-width: 480px) {
+  .modal-box {
+    width: 90%;
+  }
+
+  .pin-main-button {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+
+}
