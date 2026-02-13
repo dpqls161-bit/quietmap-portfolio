@@ -29,7 +29,7 @@ https://youtu.be/vXWoEApYp0U?si=OVnWvnS5bKu0uaYB
 
 ### 2. 핀 등록 화면
 
-![핀 등록 화면](assets/screenshots/pin-create.jpg)
+![핀 등록 화면](assets/screenshots/pin-create-modal.jpg)
 
 ### 3. 핀 상세 확인 화면
 
