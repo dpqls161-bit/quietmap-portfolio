@@ -1,43 +1,51 @@
 # QuietMap
 
-조용한 길을 선택하기 위한 지도 기반 웹 서비스입니다.  
-사용자는 지도 위에 소음 수준 핀을 확인하고, 비교적 조용한 경로를 선택할 수 있습니다.
+QuietMap은 지도 위에 소음 수준을 시각화하여, 사용자가 비교적 조용한 길을 선택할 수 있도록 돕는 웹 서비스입니다.  
+단순히 위치를 기록하는 지도가 아니라, 사용자 참여형 소음 태그 데이터를 기반으로 경로 선택에 도움을 주는 것을 목표로 기획되었습니다.
+
+본 프로젝트는 팀 프로젝트로 진행되었으며, 프론트엔드 영역을 분담하여 개발하였습니다.
 
 ---
 
-## Tech Stack
-React · React Router · Context API · Firebase Auth · Kakao Map API · CSS
+## 기술 스택
+
+- React
+- React Router
+- Context API
+- Firebase Authentication
+- Kakao Map API
+- CSS 기반 스타일 관리
 
 ---
 
-## What I Did (Frontend)
+## 담당 역할 (프론트엔드)
 
-- Firebase Authentication 기반 로그인 구현
+- Firebase Authentication 기반 로그인 기능 구현
 - Context API를 활용한 전역 인증 상태 관리
-- React Router 기반 페이지 라우팅 구성
-- 지도 범위에 따른 핀 동적 렌더링 로직 구현
+- React Router를 이용한 페이지 라우팅 구성
+- 지도 범위에 따라 핀을 동적으로 렌더링하는 로직 구현
 - 핀 등록 모달 상태 관리 및 UI 구현
 - CSS 구조 리팩토링 및 스타일 폴더 통합 정리
-- 포트폴리오용 Mock 모드 분기 처리 구현
+- 서버 없이 실행 가능한 Mock 모드 분기 처리 구현
 
 ---
 
-## Key Implementation
+## 주요 구현 내용
 
-- 지도 이동 시 현재 범위에 해당하는 핀만 재렌더링하도록 설계
-- 인증 상태에 따라 핀 등록 기능 제어
-- 서버 없이 실행 가능하도록 Mock 모드 설계
+- 지도 이동 시 현재 화면 범위에 해당하는 핀만 재렌더링하도록 설계
+- 인증 상태에 따라 핀 등록 기능을 제어
+- 실제 서버 없이도 동작 확인이 가능하도록 Mock 모드 구성
 
 ---
 
-## Run
+## 실행 방법
 
-```bash
+```
 npm install
 npm start
 ```
 
-Mock 모드 실행 시 `.env` 파일에:
+Mock 모드 실행 시 `.env` 파일에 다음을 추가합니다.
 
 ```
 REACT_APP_USE_MOCK=true
@@ -45,7 +53,7 @@ REACT_APP_USE_MOCK=true
 
 ---
 
-## Demo
+## 데모
 
-- Demo Video: (링크 추가)
-- Screenshot: (이미지 추가)
+- 시연 영상: (링크 추가)
+- 실행 화면 캡처: (이미지 추가)
