@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import "../styles/mapstyle.css";
 import BottomNav from "../components/nav";
 import { auth } from "../firebase";
+import { fetchPins } from "../api/pins";
 
 const API_BASE = "https://preaortic-paratactically-marti.ngrok-free.dev";
 
@@ -20,49 +21,59 @@ const MapPage = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [tagText, setTagText] = useState("");
 
-
   const handleColorSelect = (color) => {
     setSelectedColor(color);
     selectedColorRef.current = color;
     setShowMenu(false);
   };
 
-  
-const fetchRouteScore = async () => {
-  if (!window.map) return;
+  // ✅ 핀 등록 모달/입력값 초기화(중복 제거용)
+  const resetPinForm = () => {
+    setShowModal(false);
+    setSelectedFile(null);
+    setTagText("");
+    setSelectedColor(null);
+    selectedColorRef.current = null;
+    setShowMenu(false);
+  };
 
-  const center = window.map.getCenter();
-  const lat = center.getLat();
-  const lng = center.getLng();
-
-  const offset = 0.0005; 
-
-  try {
-    const res = await fetch(`${API_BASE}/api/pins/score`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        min_lat: lat - offset,
-        max_lat: lat + offset,
-        min_lng: lng - offset,
-        max_lng: lng + offset,
-      }),
-    });
-
-    const data = await res.json();
-    console.log("경로 소음 점수:", data);
-
-    setRouteScore(data);
-  } catch (err) {
-    console.error("점수 조회 오류:", err);
-  }
-};
-
-
-
-  const loadPins = () => {
+  const fetchRouteScore = async () => {
+      // ✅ Mock 모드에서는 점수 조회 호출하지 않음
+    if (process.env.REACT_APP_USE_MOCK === "true") return; 
     if (!window.map) return;
 
+    const center = window.map.getCenter();
+    const lat = center.getLat();
+    const lng = center.getLng();
+
+    const offset = 0.0005;
+
+    try {
+      const res = await fetch(`${API_BASE}/api/pins/score`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          min_lat: lat - offset,
+          max_lat: lat + offset,
+          min_lng: lng - offset,
+          max_lng: lng + offset,
+        }),
+      });
+
+      const data = await res.json();
+      console.log("경로 소음 점수:", data);
+
+      setRouteScore(data);
+    } catch (err) {
+      console.error("점수 조회 오류:", err);
+    }
+  };
+
+  const loadPins = async () => {
+    if (!window.map) return;
+
+    // ✅ 현재는 fetchPins()가 params를 안 쓰지만,
+    // 나중에 범위 필터링 API로 바꾸면 여기 params 활용 가능
     const bounds = window.map.getBounds();
     const sw = bounds.getSouthWest();
     const ne = bounds.getNorthEast();
@@ -73,40 +84,41 @@ const fetchRouteScore = async () => {
       min_lng: sw.getLng(),
       max_lng: ne.getLng(),
     });
+    void params; // 사용 안 해서 경고 뜨는 거 방지(원하면 삭제 가능)
 
-    fetch(`${API_BASE}/api/pins/?${params.toString()}`)
-      .then((res) => res.json())
-      .then((pins) => {
-        console.log("불러온 핀:", pins);
+    try {
+      const pins = await fetchPins();
 
-        markersRef.current.forEach((m) => m.setMap(null));
-        markersRef.current = [];
+      console.log("불러온 핀:", pins);
 
-        const colorMap = {
-          loud: "red",
-          normal: "yellow",
-          quiet: "green",
-        };
+      markersRef.current.forEach((m) => m.setMap(null));
+      markersRef.current = [];
 
-        pins.forEach((pin) => {
-          const imageSrc = `/${colorMap[pin.level]}.png`;
-          const markerImage = new kakao.maps.MarkerImage(
-            imageSrc,
-            new kakao.maps.Size(32, 32)
-          );
+      const colorMap = {
+        loud: "red",
+        normal: "yellow",
+        quiet: "green",
+      };
 
-          const marker = new kakao.maps.Marker({
-            map: window.map,
-            position: new kakao.maps.LatLng(pin.lat, pin.lng),
-            image: markerImage,
-          });
+      pins.forEach((pin) => {
+        const imageSrc = `/${colorMap[pin.level]}.png`;
+        const markerImage = new kakao.maps.MarkerImage(
+          imageSrc,
+          new kakao.maps.Size(32, 32)
+        );
 
-          markersRef.current.push(marker);
+        const marker = new kakao.maps.Marker({
+          map: window.map,
+          position: new kakao.maps.LatLng(pin.lat, pin.lng),
+          image: markerImage,
         });
-      })
-      .catch((err) => console.error("핀 불러오기 오류:", err));
-  };
 
+        markersRef.current.push(marker);
+      });
+    } catch (err) {
+      console.error("핀 불러오기 오류:", err);
+    }
+  };
 
   useEffect(() => {
     const container = document.getElementById("map");
@@ -153,21 +165,17 @@ const fetchRouteScore = async () => {
       setShowModal(true);
     });
 
-
     loadPins();
-    fetchRouteScore();
-
+    // fetchRouteScore();
 
     kakao.maps.event.addListener(map, "idle", () => {
       loadPins();
-      fetchRouteScore();
+      // fetchRouteScore();
     });
   }, []);
 
-
   useEffect(() => {
     if (!window.map || !routeScore) return;
-
 
     if (routeScore.pin_count === 0) {
       if (window.routeMarker) {
@@ -197,8 +205,14 @@ const fetchRouteScore = async () => {
     });
   }, [routeScore]);
 
-
   const handleSubmitPin = () => {
+    // ✅ Mock 모드면 서버로 POST 요청 막기 (핀 등록)
+    if (process.env.REACT_APP_USE_MOCK === "true") {
+      alert("Mock 모드에서는 핀 등록 기능이 비활성화됩니다.");
+      resetPinForm();
+      return;
+    }
+
     if (!selectedFile) return alert("사진을 업로드하세요.");
     if (!tagText.trim()) return alert("의견을 입력하세요.");
     if (!auth.currentUser) return alert("로그인이 필요합니다!");
@@ -226,22 +240,16 @@ const fetchRouteScore = async () => {
 
         alert("등록 완료!");
         loadPins();
-        fetchRouteScore();
+        // fetchRouteScore();
       })
-      .catch((err) => console.error("핀 등록 오류:", err));
-
-    setShowModal(false);
-    setSelectedFile(null);
-    setTagText("");
-    setSelectedColor(null);
-    selectedColorRef.current = null;
-    setShowMenu(false);
+      .catch((err) => console.error("핀 등록 오류:", err))
+      .finally(() => {
+        resetPinForm(); // ✅ 성공/실패 상관없이 폼 정리
+      });
   };
-
 
   return (
     <div className="map-wrapper">
-
       {routeScore && (
         <div
           style={{
@@ -266,9 +274,18 @@ const fetchRouteScore = async () => {
 
       {showMenu && (
         <div className="pin-color-menu">
-          <div className="pin-color red" onClick={() => handleColorSelect("red")} />
-          <div className="pin-color yellow" onClick={() => handleColorSelect("yellow")} />
-          <div className="pin-color green" onClick={() => handleColorSelect("green")} />
+          <div
+            className="pin-color red"
+            onClick={() => handleColorSelect("red")}
+          />
+          <div
+            className="pin-color yellow"
+            onClick={() => handleColorSelect("yellow")}
+          />
+          <div
+            className="pin-color green"
+            onClick={() => handleColorSelect("green")}
+          />
         </div>
       )}
 
@@ -278,7 +295,10 @@ const fetchRouteScore = async () => {
             <h3>핀 정보 등록</h3>
 
             <label>사진 업로드</label>
-            <input type="file" onChange={(e) => setSelectedFile(e.target.files[0])} />
+            <input
+              type="file"
+              onChange={(e) => setSelectedFile(e.target.files[0])}
+            />
 
             <label>의견 / 태그 입력</label>
             <textarea
@@ -290,7 +310,10 @@ const fetchRouteScore = async () => {
             <button className="modal-save-btn" onClick={handleSubmitPin}>
               등록
             </button>
-            <button className="modal-cancel-btn" onClick={() => setShowModal(false)}>
+            <button
+              className="modal-cancel-btn"
+              onClick={() => setShowModal(false)}
+            >
               취소
             </button>
           </div>
@@ -303,5 +326,4 @@ const fetchRouteScore = async () => {
   );
 };
 
-
-export default MapPage;  
+export default MapPage;

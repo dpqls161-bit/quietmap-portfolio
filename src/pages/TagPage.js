@@ -4,59 +4,47 @@ import React, { useEffect, useState, useRef } from "react";
 import "../styles/mapstyle.css";
 import BottomNav from "../components/nav";
 import PinDetailModal from "../components/PinDetailModal";
+import { fetchPins } from "../api/pins";
 
-const API_BASE = "https://preaortic-paratactically-marti.ngrok-free.dev";
+
 /* global kakao */
 
 const TagPage = () => {
   const markersRef = useRef([]);
   const [selectedPinId, setSelectedPinId] = useState(null);
 
-  const loadPins = () => {
-    if (!window.tagMap) return;
+  const loadPins = async () => {
+  if (!window.tagMap) return;
 
-    const bounds = window.tagMap.getBounds();
-    const sw = bounds.getSouthWest();
-    const ne = bounds.getNorthEast();
+  try {
+    const pins = await fetchPins();
 
-    const params = new URLSearchParams({
-      min_lat: sw.getLat(),
-      max_lat: ne.getLat(),
-      min_lng: sw.getLng(),
-      max_lng: ne.getLng(),
-    });
+    // 기존 마커 제거
+    markersRef.current.forEach((m) => m.setMap(null));
+    markersRef.current = [];
 
-    fetch(`${API_BASE}/api/pins/?${params.toString()}`, {
-      headers: { "ngrok-skip-browser-warning": "69420" },
-    })
-      .then((res) => res.json())
-      .then((pins) => {
-        markersRef.current.forEach((m) => m.setMap(null));
-        markersRef.current = [];
+    // 마커 다시 생성 (기존 로직 유지)
+    pins.forEach((pin) => {
+      const imageSrc = process.env.PUBLIC_URL + `/${pin.level}.png`;
 
-        pins.forEach((pin) => {
-          // pin.level already = red/yellow/green
-          const imageSrc = process.env.PUBLIC_URL + `/${pin.level}.png`;
+      const markerImage = new kakao.maps.MarkerImage(
+        imageSrc,
+        new kakao.maps.Size(32, 32)
+      );
 
-          const markerImage = new kakao.maps.MarkerImage(
-            imageSrc,
-            new kakao.maps.Size(32, 32)
-          );
-
-          const marker = new kakao.maps.Marker({
-            map: window.tagMap,
-            position: new kakao.maps.LatLng(pin.lat, pin.lng),
-            image: markerImage,
-          });
-
-          kakao.maps.event.addListener(marker, "click", () => {
-            setSelectedPinId(pin.id);
-          });
-
-          markersRef.current.push(marker);
-        });
+      const marker = new kakao.maps.Marker({
+        map: window.tagMap,
+        position: new kakao.maps.LatLng(pin.lat, pin.lng),
+        image: markerImage,
       });
-  };
+
+      markersRef.current.push(marker);
+    });
+  } catch (err) {
+    console.error("핀 불러오기 오류:", err);
+  }
+};
+
 
   useEffect(() => {
     const container = document.getElementById("tag-map");
